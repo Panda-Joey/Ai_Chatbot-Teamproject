@@ -1,0 +1,133 @@
+/* ===== COLOR PALET (from your screenshot) ===== */
+:root {
+    --espresso:   #5c3d2e;
+    --latte:      #e7ddcf;
+    --cream:      #f7f2e6;
+    --caramel:    #c9b39a;
+    --outline:    #8a6b52;
+}
+
+/* ===== PAGE BACKGROUND + OVERLAY ===== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe Script", "Brush Script MT", cursive;
+
+    /* blurred warm background */
+    background: url("BedAndBreakfast.png") center/cover no-repeat;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(226, 207, 180, 0.75);  /* extracted from photo */
+    backdrop-filter: blur(3px);
+    z-index: -1;
+}
+
+/* ===== PAGE BORDER ===== */
+body {
+    border: 6px solid var(--espresso);
+    box-shadow: inset 0 0 40px rgba(50, 30, 15, 0.35);
+}
+
+/* ===== TITLE ===== */
+h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-top: 25px;
+    color: var(--espresso);
+    text-shadow: 1px 1px 2px rgba(70, 45, 30, 0.4);
+}
+
+/* ===== CHAT CONTAINER ===== */
+.ai_chat {
+    width: 65%;
+    margin: 30px auto;
+
+    background: var(--latte);
+    border: 4px solid var(--espresso);
+    border-radius: 20px;
+
+    padding: 25px;
+    box-shadow:
+        0 0 12px rgba(60, 40, 20, 0.35),
+        inset 0 0 12px rgba(110, 90, 70, 0.20);
+}
+
+/* ===== CHAT WINDOW ===== */
+#chat {
+    height: 360px;
+    overflow-y: auto;
+
+    background: var(--cream);
+    border: 3px solid var(--caramel);
+    border-radius: 15px;
+
+    padding: 15px;
+
+    box-shadow: inset 0 0 10px rgba(80, 60, 50, 0.25);
+    font-size: 18px;
+    color: var(--espresso);
+}
+
+/* ===== SCROLLBAR (exact match) ===== */
+#chat::-webkit-scrollbar {
+    width: 14px;
+}
+#chat::-webkit-scrollbar-track {
+    background: var(--latte);
+    border-left: 2px solid var(--espresso);
+}
+#chat::-webkit-scrollbar-thumb {
+    background: var(--espresso);
+    border: 3px solid var(--cream);
+    border-radius: 10px;
+}
+
+/* ===== INPUT FIELD ===== */
+#userInput {
+    width: 75%;
+    padding: 12px 20px;
+
+    font-size: 18px;
+    font-family: inherit;
+    color: var(--espresso);
+
+    background: var(--cream);
+    border: 3px solid var(--espresso);
+    border-radius: 28px;
+
+    box-shadow: inset 0 0 6px rgba(90, 60, 40, 0.25);
+}
+
+#userInput::placeholder {
+    color: var(--outline);
+}
+
+/* ===== BUTTON (matches 'Enter' in screenshot) ===== */
+button {
+    padding: 12px 32px;
+    font-size: 20px;
+
+    background: var(--cream);
+    border: 3px solid var(--espresso);
+    border-radius: 30px;
+
+    color: var(--espresso);
+    font-family: "Segoe Script", cursive;
+
+    cursor: pointer;
+    box-shadow: 0 0 4px rgba(60, 40, 20, 0.4);
+    transition: 0.25s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: #fffdf8;
+}
+
+button:active {
+    transform: scale(0.95);
+}
