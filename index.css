@@ -57,7 +57,7 @@ h2 {
 }
 
 /* ===== CHAT WINDOW ===== */
-#chat {
+#chatBox {
     height: 360px;
     overflow-y: auto;
 
@@ -73,21 +73,21 @@ h2 {
 }
 
 /* ===== SCROLLBAR (exact match) ===== */
-#chat::-webkit-scrollbar {
+#chatBox::-webkit-scrollbar {
     width: 14px;
 }
-#chat::-webkit-scrollbar-track {
+#chatBox::-webkit-scrollbar-track {
     background: var(--latte);
     border-left: 2px solid var(--espresso);
 }
-#chat::-webkit-scrollbar-thumb {
+#chatBox::-webkit-scrollbar-thumb {
     background: var(--espresso);
     border: 3px solid var(--cream);
     border-radius: 10px;
 }
 
 /* ===== INPUT FIELD ===== */
-#userInput {
+#messageInput {
     width: 75%;
     padding: 12px 20px;
 
@@ -102,7 +102,7 @@ h2 {
     box-shadow: inset 0 0 6px rgba(90, 60, 40, 0.25);
 }
 
-#userInput::placeholder {
+#messageInput::placeholder {
     color: var(--outline);
 }
 
@@ -130,4 +130,13 @@ button:hover {
 
 button:active {
     transform: scale(0.95);
+}
+
+
+.user-message {
+    background: #e7ddcf;
+    padding: 6px 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    text-align: right;
 }
