@@ -140,3 +140,9 @@ button:active {
     border-radius: 8px;
     text-align: right;
 }
+
+li {
+    cursor: pointer;
+    color: #ba9868;
+    text-decoration: underline;
+}

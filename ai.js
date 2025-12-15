@@ -2,9 +2,9 @@ function sendMessage() {
     const inputField = document.getElementById("messageInput");
     const message = inputField.value.trim();
 
-    if (message === "") return; // voorkomt lege berichten
+    if (message === "") return; // stuurt niks als er niks is getypt
 
-    // Chatbox selecteren
+    
     const chatBox = document.getElementById("chatBox");
 
     // Nieuw bericht-element maken
@@ -17,4 +17,19 @@ function sendMessage() {
 
     // Input leegmaken
     inputField.value = "";
+}
+
+function showAnswer() {
+    // vragenlijst verbergen
+    document.getElementById("questionList").style.display = "none";
+
+    // antwoord tonen
+    const answerText = document.getElementById("answer").innerText;
+    const chatBox = document.getElementById("chatBox");
+
+    const answerDiv = document.createElement("div");
+    answerDiv.className = "ai-message";
+    answerDiv.innerText = answerText;
+
+    chatBox.appendChild(answerDiv);
 }
