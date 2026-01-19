@@ -28,8 +28,12 @@ function sendMessage() {
 
     ) {
         aiReply = "Hallo, hoe kan ik u helpen?";
+
+      } else if (msg.includes("vragen")) {
+        aiReply ="Hier zijn enkele veelgestelde vragen. Staat uw vraag er niet bij? Typ deze hieronder.";
+        document.getElementById("questionList").style.display = "block";
     } else {
-        aiReply = "Dank u voor uw bericht!";
+        aiReply = "";
     }
 
     // AI bericht
@@ -40,3 +44,22 @@ function sendMessage() {
 
     inputField.value = "";
 }
+
+
+function showAnswer(element) {
+    // verberg vragen
+    document.getElementById("questionList").style.display = "none";
+
+    // haal antwoord op
+    const answer = element.getAttribute("data-answer");
+
+    // toon als AI-bericht
+    const chatBox = document.getElementById("chatBox");
+
+    const aiDiv = document.createElement("div");
+    aiDiv.className = "ai-message";
+    aiDiv.innerText = answer;
+
+    chatBox.appendChild(aiDiv);
+}
+

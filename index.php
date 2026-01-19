@@ -19,7 +19,30 @@ include 'db.php'
 
     <div id="chatBox" >
         <?php echo "Welkom bij de AI chatbot van Bed & Breakfast!"?><br><br>
-        
+
+
+<ul id="questionList" style="display:none;">
+>
+
+    <?php
+        $sql = "SELECT vraag, antwoord FROM vraag";
+        $result = $conn->query($sql);
+
+        while ($row = $result->fetch_assoc()) {
+            ?>
+    <li 
+        onclick="showAnswer(this)"
+        data-answer="<?= htmlspecialchars($row['antwoord']) ?>"
+        style="cursor:pointer;"
+    >
+        <?= htmlspecialchars($row['vraag']) ?>
+    </li>
+    <?php
+}
+?>
+
+</ul>
+
                 
          
 
