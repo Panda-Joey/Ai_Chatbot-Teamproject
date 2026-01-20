@@ -17,24 +17,41 @@ function sendMessage() {
     const msg = message.toLowerCase();
     let aiReply = "";
 
-    if (
-        msg.includes("hallo") ||
-        msg.includes("hoi") ||
-        msg.includes("hi") ||
-        msg.includes("hey") ||
-        msg.includes("goedemiddag")||
-        msg.includes("goedeavond")||
-        msg.includes("goedenmorgen")
+    const begroeting =
+    msg.includes("hallo") ||
+    msg.includes("hoi") ||
+    msg.includes("hi") ||
+    msg.includes("hey") ||
+    msg.includes("goedemiddag") ||
+    msg.includes("goedeavond") ||
+    msg.includes("goedemorgen");
 
-    ) {
-        aiReply = "Hallo, hoe kan ik u helpen?";
+const vragen =
+     msg.includes("vraag") ||
+    msg.includes("vragen");
 
-      } else if (msg.includes("vragen")) {
-        aiReply ="Hier zijn enkele veelgestelde vragen. Staat uw vraag er niet bij? Typ deze hieronder.";
-        document.getElementById("questionList").style.display = "block";
-    } else {
-        aiReply = "";
-    }
+
+const doei = 
+    msg.includes("doei") ||
+    msg.includes("tot ziens") ||
+    msg.includes("bedankt");
+
+        // begroeting
+        if (begroeting) {
+            aiReply += "Hallo, hoe kan ik u helpen? ";
+        }
+
+        // vragen
+        if (vragen) {
+            aiReply += "Hier zijn enkele veelgestelde vragen. Staat uw vraag er niet bij? Typ deze hieronder.";
+            document.getElementById("questionList").style.display = "block";
+        }
+
+        if(doei){
+            aiReply += "Tot ziens! Fijne dag verder.";
+        }
+
+        
 
     // AI bericht
     const aiDiv = document.createElement("div");
