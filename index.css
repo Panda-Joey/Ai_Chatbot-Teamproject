@@ -146,3 +146,12 @@ li {
     color: #ba9868;
     text-decoration: underline;
 }
+
+a {
+    text-decoration: none;
+    color: var(--espresso);
+}
+
+#questionList li:hover a {
+    color: var(--espresso);
+}

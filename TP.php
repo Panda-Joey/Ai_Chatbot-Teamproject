@@ -1,3 +1,24 @@
+<?php
+include 'db.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $vraag = $_POST['vraag'];
+
+    $sql = "INSERT INTO vraag (vraag, beantwoord) VALUES (?,0)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $vraag);
+
+    if ($stmt->execute()) {
+        echo "Vraag word binnenkort beantwoord.";
+    } else {
+        echo "Er is iets mis gegaan.";
+    }
+
+    $stmt->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>

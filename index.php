@@ -37,9 +37,15 @@ include 'db.php'
     >
         <?= htmlspecialchars($row['vraag']) ?>
     </li>
+    
     <?php
 }
+
 ?>
+
+<li>
+    <a href="TP.php">Stel hier je gewenste vraag!</a>
+</li>
 
 </ul>
 

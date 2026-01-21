@@ -51,6 +51,10 @@ const doei =
             aiReply += "Tot ziens! Fijne dag verder.";
         }
 
+        if(aiReply === ""){
+            aiReply += "Het spijt me, ik begrijp uw vraag niet helemaal. Kunt u het anders formuleren?";
+        }
+
         
 
     // AI bericht
