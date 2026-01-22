@@ -1,0 +1,23 @@
+-- gebruikers
+CREATE TABLE IF NOT EXISTS `gebruikers` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `role` VARCHAR(50) NOT NULL DEFAULT 'user',
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+-- vragen
+CREATE TABLE IF NOT EXISTS `ai_vraag` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `vraag` TEXT NOT NULL,
+  `antwoord` TEXT NULL,
+  `beantwoord` TINYINT(1) NOT NULL DEFAULT 0,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
