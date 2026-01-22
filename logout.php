@@ -1,5 +1,5 @@
 <?php
-include 'config.php';
+include 'db.php';
 include 'auth.php';
 
 logout();

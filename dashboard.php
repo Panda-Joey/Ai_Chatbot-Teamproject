@@ -1,5 +1,7 @@
 <?php
-include 'config.php';
+session_start();
+
+include 'db.php';
 include 'auth.php';
 
 if (!is_logged_in()) {
