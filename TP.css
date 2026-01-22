@@ -1,0 +1,80 @@
+:root{
+--e:#5c3d2e;--l:#e7ddcf;--c:#f7f2e6
+}
+
+body{
+margin:0;font-family:"Segoe Script",cursive;
+background:url("BedAndBreakfast.png") center/cover no-repeat;
+border:6px solid var(--e);
+box-shadow:inset 0 0 40px rgba(50,30,15,.35)
+}
+body::before{
+content:"";position:fixed;inset:0;
+background:rgba(226,207,180,.75);
+backdrop-filter:blur(3px);z-index:-1
+}
+
+h2{
+text-align:center;margin:30px 0;
+font-size:36px;color:var(--e)
+}
+
+form{
+max-width:420px;margin:0 auto 40px;
+padding:25px;background:var(--l);
+border:4px solid var(--e);
+border-radius:20px;
+box-shadow:0 0 12px rgba(60,40,20,.35)
+}
+
+label{color:var(--e);font-size:18px}
+
+input,textarea{
+width:100%;padding:10px;margin-top:6px;
+background:var(--c);font-family:inherit;
+border:3px solid var(--e);
+border-radius:14px;
+box-sizing:border-box
+}
+
+button{
+width:100%;margin-top:15px;padding:12px;
+font-size:20px;font-family:inherit;
+background:var(--c);
+border:3px solid var(--e);
+border-radius:30px;
+cursor:pointer
+}
+
+.antwoord-box{
+max-width:600px;
+margin:0 auto 40px;
+padding:30px;
+background:var(--l);
+border:4px solid var(--e);
+border-radius:25px;
+box-shadow:0 0 15px rgba(60,40,20,.35);
+color:var(--e);
+font-size:18px
+}
+
+.antwoord-box p{
+margin:10px 0;
+line-height:1.6
+}
+
+.antwoord-box strong{
+font-size:19px
+}
+
+.antwoord-box hr{
+border:none;
+height:3px;
+background:var(--e);
+border-radius:5px;
+margin:20px 0
+}
+
+h2{
+letter-spacing:1px
+}
