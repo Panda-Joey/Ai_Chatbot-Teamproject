@@ -1,6 +1,36 @@
 <?php 
-include 'db.php'
+include 'db.php';
 
+
+
+if (isset($_POST['message'])) {
+ $userMessage = strtolower(trim($_POST['message'] ?? ''));
+
+ $sql = "SELECT antwoord, keywoord FROM vraag WHERE beantwoord = 1";
+ $result = $conn->query($sql);
+
+ $bestScore = 0;
+ $bestAnswer = "Dank u voor uw vraag. Een medewerker helpt u zo snel mogelijk.";
+
+ while ($row = $result->fetch_assoc()) {
+    $keywords = explode(',', strtolower($row['keywoord'] ?? ''));
+    $score = 0;
+
+    foreach ($keywords as $kw) {
+        if ($kw !== "" && strpos($userMessage, trim($kw)) !== false) {
+            $score++;
+        }
+    }
+
+    if ($score > $bestScore) {
+        $bestScore = $score;
+        $bestAnswer = $row['antwoord'];
+    }
+}
+
+echo $bestAnswer;
+exit;
+}
 
 ?>
 
@@ -54,7 +84,7 @@ include 'db.php'
 
     </div>
 
-<input id="messageInput" type="text" placeholder="Typ je bericht..." >
+<input id="messageInput" name="message" method="post" type="text" placeholder="Typ je bericht..." >
 <button onclick="sendMessage()">Verstuur</button>
 </div>
 

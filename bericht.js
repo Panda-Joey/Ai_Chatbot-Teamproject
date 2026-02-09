@@ -17,44 +17,24 @@ function sendMessage() {
     const msg = message.toLowerCase();
     let aiReply = "";
 
-    const begroeting =
-    msg.includes("hallo") ||
-    msg.includes("hoi") ||
-    msg.includes("hi") ||
-    msg.includes("hey") ||
-    msg.includes("goedemiddag") ||
-    msg.includes("goedeavond") ||
-    msg.includes("goedemorgen");
+    // VERSTUUR NAAR PHP
+    fetch("index.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "message=" + encodeURIComponent(message)
+    })
+    .then(response => response.text())
+    .then(answer => {
+        const aiDiv = document.createElement("div");
+        aiDiv.className = "ai-message";
+        aiDiv.innerText = answer;
+        chatBox.appendChild(aiDiv);
+    });
 
-const vragen =
-     msg.includes("vraag") ||
-    msg.includes("vragen");
-
-
-const doei = 
-    msg.includes("doei") ||
-    msg.includes("tot ziens") ||
-    msg.includes("bedankt");
-
-        // begroeting
-        if (begroeting) {
-            aiReply += "Hallo, hoe kan ik u helpen? ";
-        }
-
-        // vragen
-        if (vragen) {
-            aiReply += "Hier zijn enkele veelgestelde vragen. Staat uw vraag er niet bij? Typ deze hieronder.";
-            document.getElementById("questionList").style.display = "block";
-        }
-
-        if(doei){
-            aiReply += "Tot ziens! Fijne dag verder.";
-        }
-
-        if(aiReply === ""){
-            aiReply += "Het spijt me, ik begrijp uw vraag niet helemaal. Kunt u het anders formuleren?";
-        }
-
+    inputField.value = "";
+}
         
 
     // AI bericht
@@ -64,7 +44,7 @@ const doei =
     chatBox.appendChild(aiDiv);
 
     inputField.value = "";
-}
+
 
 
 function showAnswer(element) {
