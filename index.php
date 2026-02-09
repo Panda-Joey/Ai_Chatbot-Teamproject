@@ -55,7 +55,8 @@ exit;
 >
 
     <?php
-        $sql = "SELECT vraag, antwoord FROM vraag";
+        $sql = "SELECT vraag, antwoord FROM vraag WHERE antwoord IS NOT NULL";
+
         $result = $conn->query($sql);
 
         while ($row = $result->fetch_assoc()) {
