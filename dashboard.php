@@ -42,23 +42,16 @@ if (!empty($_SESSION['username'])) {
 if ($is_boss) {
     echo '<div class="questions">';
     echo '<h2>Gestelde vragen</h2>';
-    $questionsResult = mysqli_query($conn, "SELECT id, vraag, created_at FROM ai_vraag WHERE beantwoord = 0 ORDER BY created_at DESC");
+    $questionsResult = mysqli_query($conn, "SELECT idvraag, vraag FROM vraag WHERE beantwoord = 0 ");
     if ($questionsResult && mysqli_num_rows($questionsResult) > 0) {
         while ($questionRow = mysqli_fetch_assoc($questionsResult)) {
-            $questionId = (int)$questionRow['id'];
+            $questionId = (int)$questionRow['idvraag'];
             $questionText = htmlspecialchars($questionRow['vraag']);
-            $createdAtRaw = $questionRow['created_at'];
-            try {
-                $dateTime = new DateTime($createdAtRaw, new DateTimeZone('UTC'));
-                $dateTime->setTimezone(new DateTimeZone('Europe/Amsterdam'));
-                $createdAt = $dateTime->format('d-m-Y H:i:s');
-            } catch (Exception $exception) {
-                $createdAt = htmlspecialchars($createdAtRaw);
-            }
+
 
             echo "<div class=\"questionbox\">";
             echo "<div class=\"questiontext\">$questionText</div>";
-            $answerFormLink = 'answer.php?id=' . $questionId;
+            $answerFormLink = 'awgeven.php?id=' . $questionId; //pagina button
             echo "<div class=\"questionactions\">";
             echo "<a class=\"answer-button\" href=\"$answerFormLink\">Beantwoorden</a>";
             echo "</div>";

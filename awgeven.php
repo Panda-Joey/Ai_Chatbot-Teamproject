@@ -5,18 +5,26 @@ include 'db.php';
 $id = $_GET['id'] ?? null;
 
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $id = $_POST['id'];
-    $antwoord = $_POST['antwoord'];
-    $keywoord = $_POST['keywoord'];
+    $id = (int) $_POST['id'];
+    $antwoord = trim($_POST['antwoord'] ?? '');
+    $rawKeyword = $_POST['keywoord'] ?? '';
+
+    // KEYWORD OPSCHONEN
+    $rawKeyword = strtolower($rawKeyword);              // lowercase
+    $keywords = explode(',', $rawKeyword);              // splitsen
+    $keywords = array_map('trim', $keywords);           // spaties weg
+    $keywords = array_filter($keywords);                // lege eruit
+    $keywords = array_unique($keywords);                // duplicaten eruit
+    $cleanKeyword = implode(',', $keywords);             // terug naar string
 
     $sql = "UPDATE vraag 
             SET antwoord = ?, keywoord = ?, beantwoord = 1
             WHERE idvraag = ?";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssi", $antwoord, $keywoord, $id);
+    $stmt->bind_param("ssi", $antwoord, $cleanKeyword, $id);
     $stmt->execute();
 
     echo "<p>Vraag succesvol beantwoord.</p>";
