@@ -10,7 +10,8 @@ if (isset($_POST['message'])) {
  $result = $conn->query($sql);
 
  $bestScore = 0;
- $bestAnswer = "Dank u voor uw vraag. Een medewerker helpt u zo snel mogelijk.";
+ $bestAnswer = "Dank u voor uw vraag. Ik kan geen antwoord geven op je vrraag. 
+ <a href=http://localhost/tp.php>klik hier om je vraag aan een mens te vragen</a>";
 
  while ($row = $result->fetch_assoc()) {
     $keywords = explode(',', strtolower($row['keywoord'] ?? ''));

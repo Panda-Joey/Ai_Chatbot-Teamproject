@@ -10,7 +10,7 @@ function sendMessage() {
     // USER bericht
     const userDiv = document.createElement("div");
     userDiv.className = "user-message";
-    userDiv.innerText = message;
+    userDiv.innerHTML = message;
     chatBox.appendChild(userDiv);
 
     // AI logica
@@ -29,7 +29,7 @@ function sendMessage() {
     .then(answer => {
         const aiDiv = document.createElement("div");
         aiDiv.className = "ai-message";
-        aiDiv.innerText = answer;
+        aiDiv.innerHTML = answer;
         chatBox.appendChild(aiDiv);
     });
 
